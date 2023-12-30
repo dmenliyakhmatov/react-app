@@ -2,13 +2,6 @@ import { PostCard } from './features/post';
 import './global.css';
 
 
-type UserCardProps = {
-  name: string
-  birthdate: string
-  position: string
-  lastOnline: string
-};
-
 
 const postData = {
   section: 'Technology',
@@ -66,24 +59,3 @@ export const App = () => {
 
 };
 
-// return React.createElement('div', { style: { padding: "24px" } },
-//   React.createElement('button', { onClick: updateUserData, style: { border: '1px solid red' } }, 'Update Data')
-// )
-
-// return (
-//   <div className={s.root}>
-//     <h1>{greeting}</h1>
-
-//     {userData.map((user, index) => (
-//       <UserCard key={index} {...user} />
-//     ))}
-
-//     <button className={isAdmin ? 'admin' : 'default'} onClick={updateUserData}>Update Data</button>
-
-//     <button onClick={() => {
-//       setGreeting('Bye')
-//     }}>set admin</button>
-
-
-//   </div>
-// );
