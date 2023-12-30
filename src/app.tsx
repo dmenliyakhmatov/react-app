@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { PostCard } from './features/post';
 import './global.css';
+
 
 type UserCardProps = {
   name: string
@@ -9,63 +10,80 @@ type UserCardProps = {
 };
 
 
-
-export const UserCard = ({ birthdate, name, position, lastOnline }: UserCardProps) => {
-  return (
-    <div >
-
-      <div >
-        <h2>{name}</h2>
-        <p>
-          <strong>Birth date:</strong> {birthdate}
-        </p>
-        <p>
-          <strong>Position:</strong> {position}
-        </p>
-        <p>
-          <strong>Last online:</strong> {lastOnline}
-        </p>
-      </div>
-    </div>
-  );
+const postData = {
+  section: 'Technology',
+  authorName: 'John Doe',
+  authorAvatar: 'path-to-avatar.jpg',
+  publicationDate: 'January 15, 2023',
+  title: 'Lorem Ipsum Dolor Sit Amet',
+  coverImage: 'path-to-cover-image.jpg',
+  views: 1234,
+  likes: 56,
+  comments: 23,
+  bookmarks: 10,
 };
 
+const postData2 = {
+  section: 'Games',
+  authorName: 'John Doe',
+  authorAvatar: 'path-to-avatar.jpg',
+  publicationDate: 'January 15, 2023',
+  title: 'Lorem Ipsum Dolor Sit Amet',
+  coverImage: 'path-to-cover-image.jpg',
+  views: 1234,
+  likes: 56,
+  comments: 23,
+  bookmarks: 10,
+};
 
+const arrData = [postData, postData2]
 
 
 export const App = () => {
-  const [userData, setUserData] = useState([
-    {
-      name: 'John Doe',
-      birthdate: '1990-01-01',
-      position: 'Developer',
-      lastOnline: '2023-01-01T12:30:00',
-    },
-    {
-      name: 'Jane Smith',
-      birthdate: '1985-05-15',
-      position: 'Designer',
-      lastOnline: '2023-01-02T09:45:00',
-    },
-  ]);
 
-  const updateUserData = () => {
-    const updatedData = userData.map(user => ({
-      ...user,
-      lastOnline: new Date().toISOString(),
-    }));
-    setUserData(updatedData);
-  };
 
   return (
-    <div style={{ padding: "24px" }}>
+    <div style={{ padding: '24px' }}>
+      <h1>Hello</h1>
+
+      <PostCard
+
+        {...postData}
+      />
+      <PostCard
+
+        {...postData2}
+      />
 
 
-      {userData.map((user, index) => (
-        <UserCard key={index} {...user} />
-      ))}
-      <button onClick={updateUserData}>Update Data</button>
+      {arrData.map((data, index) => <PostCard key={index} {...data} />)}
+
 
     </div>
   );
+
+
+
 };
+
+// return React.createElement('div', { style: { padding: "24px" } },
+//   React.createElement('button', { onClick: updateUserData, style: { border: '1px solid red' } }, 'Update Data')
+// )
+
+// return (
+//   <div className={s.root}>
+//     <h1>{greeting}</h1>
+
+//     {userData.map((user, index) => (
+//       <UserCard key={index} {...user} />
+//     ))}
+
+//     <button className={isAdmin ? 'admin' : 'default'} onClick={updateUserData}>Update Data</button>
+
+//     <button onClick={() => {
+//       setGreeting('Bye')
+//     }}>set admin</button>
+
+
+//   </div>
+// );
