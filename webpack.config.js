@@ -6,6 +6,7 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const { ProgressPlugin } = require('webpack');
 const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 const autoprefixer = require('autoprefixer');
 
@@ -35,6 +36,11 @@ module.exports = env => {
     resolve: {
       fallback: { path: false },
       extensions: ['.ts', '.tsx', '.js'],
+      plugins: [
+        new TsconfigPathsPlugin({
+          configFile: resolve(process.cwd(), 'tsconfig.json'),
+        }),
+      ],
     },
     plugins: [
       new HtmlWebpackPlugin({
