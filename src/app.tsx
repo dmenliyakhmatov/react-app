@@ -34,6 +34,7 @@ const arrData = [postData, postData2]
 
 
 export const App = () => {
+  console.log('render app');
 
 
   return (

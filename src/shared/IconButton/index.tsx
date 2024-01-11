@@ -1,4 +1,4 @@
-import React, { MouseEvent, ReactNode } from 'react';
+import { MouseEvent, ReactNode } from 'react';
 import styles from './iconButton.module.css';
 
 type IconButtonProps = {
@@ -7,7 +7,9 @@ type IconButtonProps = {
     onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
 }
 
-export const IconButton: React.FC<IconButtonProps> = ({ icon, children, onClick }) => {
+export const IconButton = ({ icon, children, onClick }: IconButtonProps) => {
+    console.log('render icon-button');
+
     return (
         <button className={styles.iconButton} onClick={onClick}>
             {icon && <span className={styles.icon}>{icon}</span>}

@@ -8,6 +8,7 @@ import styles from './post.module.css';
 
 export const PostCard = (props: Post) => {
     const [isTitleVisible, setIsTitleVisible] = useState(true)
+    console.log('render card');
 
     return (
         <div className={styles.postCard}>
