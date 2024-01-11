@@ -1,6 +1,5 @@
 import { PageWrapper } from './features/page-wrapper';
-import { PostCard } from './features/post';
-
+import { PostCard } from './features/post/ui';
 
 
 
