@@ -23,20 +23,6 @@ module.exports = {
   rules: {
     'react/jsx-curly-brace-presence': ['error', { props: 'never', children: 'never' }],
     'import/newline-after-import': ['warn', { count: 1 }],
-
-    '@typescript-eslint/member-delimiter-style': [
-      'error',
-      {
-        multiline: {
-          delimiter: 'none',
-          requireLast: false,
-        },
-        singleline: {
-          delimiter: 'semi',
-          requireLast: false,
-        },
-      },
-    ],
     '@typescript-eslint/no-unused-vars': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',

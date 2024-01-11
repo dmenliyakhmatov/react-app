@@ -53,7 +53,7 @@ module.exports = env => {
         },
       }),
       new MiniCssExtractPlugin({
-        filename: '[name].[contenthash].css',
+        filename: isDev ? '[name].css' : '[name].[contenthash].css',
       }),
       new ReactRefreshPlugin({
         overlay: false,
