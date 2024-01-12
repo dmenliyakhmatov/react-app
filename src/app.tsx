@@ -1,5 +1,6 @@
+import { PageWrapper } from './features/page-wrapper';
 import { PostCard } from './features/post';
-import './global.css';
+
 
 
 
@@ -36,7 +37,7 @@ export const App = () => {
 
 
   return (
-    <div style={{ padding: '24px' }}>
+    <PageWrapper>
       <h1>Hello</h1>
 
       <PostCard
@@ -52,7 +53,7 @@ export const App = () => {
       {arrData.map((data, index) => <PostCard key={index} {...data} />)}
 
 
-    </div>
+    </PageWrapper>
   );
 
 
