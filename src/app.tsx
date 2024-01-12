@@ -1,6 +1,7 @@
 import avatar from 'assets/images/avatar.jpg';
 import cover from 'assets/images/cover.webp';
 import { PageWrapper } from './features/page-wrapper';
+import { mockPosts } from './features/post/model/mockData';
 import { PostCard } from './features/post/ui/PostCard';
 
 
@@ -41,17 +42,7 @@ export const App = () => {
     <PageWrapper>
       <h1>Hello</h1>
 
-      <PostCard
-
-        {...postData}
-      />
-      <PostCard
-
-        {...postData2}
-      />
-
-
-      {arrData.map((data, index) => <PostCard key={index} {...data} />)}
+      {mockPosts.map((data, index) => <PostCard key={index} {...data} />)}
 
 
     </PageWrapper>
