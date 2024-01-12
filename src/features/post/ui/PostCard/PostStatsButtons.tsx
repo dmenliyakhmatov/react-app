@@ -1,3 +1,4 @@
+import HeartIcon from 'assets/icons/heart.svg';
 import { useState } from 'react';
 import { IconButton } from '../../../../shared/IconButton';
 import { Post } from '../../model/types';
@@ -19,7 +20,7 @@ export const PostStatsButtons = (props: PostStatsButtonsProps) => {
     return (
         <div className={styles.stats}>
             <IconButton icon="Views">{props.views}</IconButton>
-            <IconButton icon="Likes" onClick={onLikeClick}>{likes}</IconButton>
+            <IconButton icon={<HeartIcon color='red' height={20} width={20} />} onClick={onLikeClick}>{likes}</IconButton>
             <IconButton icon="Comments">{props.comments}</IconButton>
             <IconButton icon="Bookmarks">{props.bookmarks}</IconButton>
         </div>
