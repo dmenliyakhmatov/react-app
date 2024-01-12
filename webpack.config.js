@@ -81,7 +81,14 @@ module.exports = env => {
           test: /\.css$/i,
           use: [
             MiniCssExtractPlugin.loader,
-            'css-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                modules: {
+                  localIdentName: isDev ? '[path][name]__[local]' : '[hash:base64:8]',
+                },
+              },
+            },
             {
               loader: 'postcss-loader',
               options: {
