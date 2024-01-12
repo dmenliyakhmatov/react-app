@@ -2,7 +2,7 @@
 
 import styles from './header.module.css'; // Путь к вашему файлу стилей
 
-export const Header = () => {
+export const Header = ({ onSearch }: { onSearch?: (e: React.ChangeEvent<HTMLInputElement>) => void }) => {
     return (
         <header className={styles.headerContainer}>
             <div className={styles.leftSection}>
@@ -13,7 +13,7 @@ export const Header = () => {
                 <div className={styles.logo}>Your Logo</div>
             </div>
             <div className={styles.centerSection}>
-                <input type="text" placeholder="Search" className={styles.searchInput} />
+                <input type="text" placeholder="Search" className={styles.searchInput} onChange={onSearch} />
                 <button className={styles.newPostButton}>Create Post</button>
             </div>
             <div className={styles.rightSection}>
