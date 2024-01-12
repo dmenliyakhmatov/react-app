@@ -19,7 +19,7 @@ module.exports = env => {
     devtool: isDev ? 'inline-source-map' : false,
     devServer: isDev
       ? {
-          open: true,
+          open: false,
           hot: true,
           port: env.mode ?? 3000,
         }

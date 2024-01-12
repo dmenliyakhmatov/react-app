@@ -1,5 +1,5 @@
-import { IconButton } from '../../../shared/IconButton';
-import { Post } from '../model/types';
+import { IconButton } from '../../../../shared/IconButton';
+import { Post } from '../../model/types';
 import styles from './postStatsButtons.module.css';
 
 type PostStatsButtonsProps = Pick<Post, 'views' | 'likes' | 'comments' | 'bookmarks'>;

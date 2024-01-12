@@ -1,4 +1,4 @@
-import { Post } from '../model/types';
+import { Post } from '../../model/types';
 import { PostStatsButtons } from './PostStatsButtons';
 import styles from './post.module.css';
 
