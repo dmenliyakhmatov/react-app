@@ -101,7 +101,12 @@ module.exports = env => {
           use: [
             {
               loader: '@svgr/webpack',
-              options: {},
+              options: {
+                icon: true,
+                svgoConfig: {
+                  plugins: [{ name: 'convertColors', params: { currentColor: true } }],
+                },
+              },
             },
           ],
         },
