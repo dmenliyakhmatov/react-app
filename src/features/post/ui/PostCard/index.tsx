@@ -1,25 +1,32 @@
+import clsx from 'clsx';
 import { useState } from 'react';
 import { IconButton } from '../../../../shared/IconButton';
 import { Post } from '../../model/types';
 import { PostStatsButtons } from './PostStatsButtons';
 import styles from './post.module.css';
 
+type PostCardProps = {
+    post: Post
+}
 
-
-export const PostCard = (props: Post) => {
+export const PostCard = ({ post }: PostCardProps) => {
     const [isTitleVisible, setIsTitleVisible] = useState(true)
-    console.log('render card');
+
+    const [isRed, setIsRed] = useState(false)
 
     return (
-        <div className={styles.postCard}>
+        <div className={clsx(styles.postCard, { [styles.backgroundRed]: isRed })}>
+
+            <button onClick={() => setIsRed(prev => !prev)}>Make card red</button>
+
             <div className={styles.header}>
                 <div className={styles.headerLeft}>
-                    <span>{props.section}</span>
+                    <span>{post.section}</span>
                     <div className={styles.authorInfo}>
-                        <img src={props.authorAvatar} alt={`${props.authorName}'s Avatar`} className={styles.avatar} />
-                        <span>{props.authorName}</span>
+                        <img src={post.authorAvatar} alt={`${post.authorName}'s Avatar`} className={styles.avatar} />
+                        <span>{post.authorName}</span>
                     </div>
-                    <span>{props.publicationDate}</span>
+                    <span>{post.publicationDate}</span>
 
                 </div>
                 <div className={styles.headerRight}>
@@ -30,18 +37,18 @@ export const PostCard = (props: Post) => {
 
             <button onClick={() => setIsTitleVisible(prev => !prev)}>{isTitleVisible ? 'Hide title' : "Show title"}</button>
 
-            {isTitleVisible && <h2>{props.title}</h2>}
+            {isTitleVisible && <h2>{post.title}</h2>}
 
             <div className={styles.coverImage}>
-                <img src={props.coverImage} alt="Cover" />
+                <img src={post.coverImage} alt="Cover" />
             </div>
 
             <PostStatsButtons
-                bookmarks={props.bookmarks}
-                comments={props.comments}
-                likes={props.likes}
-                views={props.views} />
-        </div>
+                bookmarks={post.bookmarks}
+                comments={post.comments}
+                likes={post.likes}
+                views={post.views} />
+        </div >
     );
 };
 

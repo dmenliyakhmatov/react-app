@@ -20,7 +20,7 @@ export const PostStatsButtons = (props: PostStatsButtonsProps) => {
     return (
         <div className={styles.stats}>
             <IconButton icon="Views">{props.views}</IconButton>
-            <IconButton icon={<HeartIcon color='red' height={20} width={20} />} onClick={onLikeClick}>{likes}</IconButton>
+            <IconButton icon={<HeartIcon color='blue' height={20} width={20} />} onClick={onLikeClick}>{likes}</IconButton>
             <IconButton icon="Comments">{props.comments}</IconButton>
             <IconButton icon="Bookmarks">{props.bookmarks}</IconButton>
         </div>
