@@ -1,4 +1,5 @@
-export type Post = {
+export type Article = {
+  id: number;
   section: string;
   authorName: string;
   authorAvatar: string;

@@ -1,9 +1,7 @@
 import { createRoot } from 'react-dom/client';
 
-
-import { App } from './app';
-
 import 'normalize.css';
+import { App } from './app';
 
 const app = document.getElementById('app');
 
@@ -12,5 +10,3 @@ if (app) {
 
   root.render(<App />);
 }
-
-
