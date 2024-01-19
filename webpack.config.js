@@ -22,6 +22,7 @@ module.exports = env => {
           open: false,
           hot: true,
           port: env.mode ?? 3000,
+          historyApiFallback: true,
         }
       : undefined,
     stats: 'minimal',

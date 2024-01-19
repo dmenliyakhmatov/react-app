@@ -4,6 +4,7 @@ import { Post } from './types';
 
 export const mockPosts: Post[] = [
   {
+    id: 1,
     section: 'Technology',
     authorName: 'John Doe',
     authorAvatar: avatar,
@@ -16,6 +17,7 @@ export const mockPosts: Post[] = [
     bookmarks: 120,
   },
   {
+    id: 2,
     section: 'Travel',
     authorName: 'Jane Smith',
     authorAvatar: avatar,
@@ -28,6 +30,7 @@ export const mockPosts: Post[] = [
     bookmarks: 90,
   },
   {
+    id: 3,
     section: 'Science',
     authorName: 'David Johnson',
     authorAvatar: avatar,
@@ -40,6 +43,7 @@ export const mockPosts: Post[] = [
     bookmarks: 200,
   },
   {
+    id: 4,
     section: 'Food',
     authorName: 'Maria Rodriguez',
     authorAvatar: avatar,
@@ -52,6 +56,7 @@ export const mockPosts: Post[] = [
     bookmarks: 80,
   },
   {
+    id: 5,
     section: 'Fashion',
     authorName: 'Alex Turner',
     authorAvatar: avatar,
@@ -64,6 +69,7 @@ export const mockPosts: Post[] = [
     bookmarks: 150,
   },
   {
+    id: 6,
     section: 'Health',
     authorName: 'Emily White',
     authorAvatar: avatar,
@@ -76,6 +82,7 @@ export const mockPosts: Post[] = [
     bookmarks: 110,
   },
   {
+    id: 7,
     section: 'Sports',
     authorName: 'Michael Johnson',
     authorAvatar: avatar,
@@ -88,6 +95,7 @@ export const mockPosts: Post[] = [
     bookmarks: 180,
   },
   {
+    id: 8,
     section: 'Music',
     authorName: 'Sophie Davis',
     authorAvatar: avatar,
@@ -100,6 +108,7 @@ export const mockPosts: Post[] = [
     bookmarks: 100,
   },
   {
+    id: 9,
     section: 'Movies',
     authorName: 'Robert Turner',
     authorAvatar: avatar,
@@ -112,6 +121,7 @@ export const mockPosts: Post[] = [
     bookmarks: 130,
   },
   {
+    id: 10,
     section: 'Art',
     authorName: 'Emma Parker',
     authorAvatar: avatar,
@@ -124,6 +134,7 @@ export const mockPosts: Post[] = [
     bookmarks: 95,
   },
   {
+    id: 11,
     section: 'Politics',
     authorName: 'Daniel Harris',
     authorAvatar: avatar,
@@ -136,6 +147,7 @@ export const mockPosts: Post[] = [
     bookmarks: 160,
   },
   {
+    id: 12,
     section: 'Nature',
     authorName: 'Olivia Turner',
     authorAvatar: avatar,
@@ -148,6 +160,7 @@ export const mockPosts: Post[] = [
     bookmarks: 120,
   },
   {
+    id: 13,
     section: 'Books',
     authorName: 'William Jackson',
     authorAvatar: avatar,
@@ -160,6 +173,7 @@ export const mockPosts: Post[] = [
     bookmarks: 85,
   },
   {
+    id: 14,
     section: 'Business',
     authorName: 'Sophia Roberts',
     authorAvatar: avatar,
@@ -172,6 +186,7 @@ export const mockPosts: Post[] = [
     bookmarks: 140,
   },
   {
+    id: 15,
     section: 'Education',
     authorName: 'Ethan Walker',
     authorAvatar: avatar,
