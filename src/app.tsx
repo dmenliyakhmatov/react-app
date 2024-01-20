@@ -3,7 +3,7 @@ import cover from 'assets/images/cover.webp';
 import { useState } from 'react';
 import { PageWrapper } from './features/page-wrapper';
 import { PostCard } from './features/post/ui/PostCard';
-
+import { mockPosts } from './mockData';
 
 const postData = {
   section: 'Technology',
@@ -31,38 +31,32 @@ const postData2 = {
   bookmarks: 10,
 };
 
-const arrData = [postData, postData2]
-
+const arrData = [postData, postData2];
 
 export const App = () => {
   console.log('render app');
-  const [inputValue, setInputValue] = useState('')
+  const [inputValue, setInputValue] = useState('');
+  const [articles, setArticles] = useState(mockPosts);
+
+  const onDeleteHandler = (id: number) => {
+    setArticles(prev => prev.filter(article => article.id !== id));
+  };
 
   return (
     <PageWrapper>
       <h1>Hello</h1>
 
-      <input type="text" value={inputValue} onChange={(e) => {
-        setInputValue(e.target.value)
-      }} />
-
-      <PostCard
-
-        {...postData}
-      />
-      <PostCard
-
-        {...postData2}
+      <input
+        type="text"
+        value={inputValue}
+        onChange={e => {
+          setInputValue(e.target.value);
+        }}
       />
 
-
-      {arrData.map((data, index) => <PostCard key={index} {...data} />)}
-
-
+      {articles.map((data, index) => (
+        <PostCard key={index} post={data} onDeleteClick={onDeleteHandler} />
+      ))}
     </PageWrapper>
   );
-
-
-
 };
-

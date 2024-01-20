@@ -1,4 +1,5 @@
 export type Post = {
+  id: number;
   section: string;
   authorName: string;
   authorAvatar: string;
@@ -9,4 +10,5 @@ export type Post = {
   likes: number;
   comments: number;
   bookmarks: number;
+  content: string;
 };
