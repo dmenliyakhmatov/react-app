@@ -1,7 +1,9 @@
 import clsx from 'clsx';
+import { Link } from 'react-router-dom';
 import { IconButton } from 'shared/components/IconButton';
 import TrashIcon from 'shared/icons/trash.svg';
 import { Article } from 'shared/types/articles';
+import { ROUTES } from '../../../../../router/routes';
 import { PostStatsButtons } from './PostStatsButtons';
 import styles from './post.module.css';
 
@@ -26,12 +28,13 @@ export const ArticleCard = ({ post }: PostCardProps) => {
         </div>
       </div>
 
-      <h2>{post.title}</h2>
+      <Link to={`${ROUTES.article}/${post.id}`}>
+        <h2>{post.title}</h2>
 
-      <div className={styles.coverImage}>
-        <img src={post.coverImage} alt="Cover" />
-      </div>
-
+        <div className={styles.coverImage}>
+          <img src={post.coverImage} alt="Cover" />
+        </div>
+      </Link>
       <PostStatsButtons bookmarks={post.bookmarks} comments={post.comments} likes={post.likes} views={post.views} />
     </div>
   );

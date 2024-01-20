@@ -1,10 +1,6 @@
-import { PageWrapper } from './features/core/page-wrapper';
-import { PopularPage } from './pages/Popular';
+import { RouterProvider } from 'react-router-dom';
+import { router } from './router/router';
 
 export const App = () => {
-  return (
-    <PageWrapper>
-      <PopularPage />
-    </PageWrapper>
-  );
+  return <RouterProvider router={router} />;
 };

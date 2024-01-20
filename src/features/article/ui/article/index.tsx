@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router-dom';
 import { IconButton } from '../../../../shared/components/IconButton';
 import { mockPosts } from '../../model/mockData';
 import { PostStatsButtons } from './PostStatsButtons';
@@ -8,12 +8,27 @@ import styles from './post.module.css';
 export const ArticleContent = () => {
   const { id } = useParams();
 
+  const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     navigate(ROUTES.root);
+  //   }, 1000);
+  // }, []);
+
   const [article, setArticle] = useState(mockPosts.find(article => Number(id) === article.id) ?? null);
 
   if (!article) return null;
 
   return (
     <div className={styles.postCard}>
+      {/* <button
+        onClick={() => {
+          navigate(ROUTES.root);
+        }}
+      >
+        submit form
+      </button> */}
       <div className={styles.centeredContentWrapper}>
         <div className={styles.header}>
           <div className={styles.headerLeft}>
