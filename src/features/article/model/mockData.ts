@@ -1,5 +1,5 @@
-import avatar from 'assets/images/avatar.jpg';
-import cover from 'assets/images/cover.webp';
+import avatar from 'shared/images/avatar.jpg';
+import cover from 'shared/images/cover.webp';
 import { Post } from './types';
 
 export const mockPosts: Post[] = [

@@ -1,5 +1,5 @@
-import HeartIcon from 'assets/icons/heart.svg';
 import { useState } from 'react';
+import HeartIcon from 'shared/icons/heart.svg';
 import { IconButton } from '../../../../shared/components/IconButton';
 import { Post } from '../../model/types';
 import styles from './postStatsButtons.module.css';
