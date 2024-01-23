@@ -1,8 +1,8 @@
 import { Outlet } from 'react-router-dom';
-import { PageWrapper } from './page-wrapper';
+import { OneComponentPageWrapper } from './example/OneComponentPageWrapper';
 
 export const RootComponet = () => (
-  <PageWrapper>
+  <OneComponentPageWrapper>
     <Outlet />
-  </PageWrapper>
+  </OneComponentPageWrapper>
 );
