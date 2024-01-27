@@ -11,10 +11,7 @@ export const PostStatsButtons = (props: PostStatsButtonsProps) => {
 
   const onLikeClick = () => {
     setLikes(prev => prev + 1);
-    console.log('like clicked');
   };
-
-  console.log('rendering PostStatsButtons');
 
   return (
     <div className={styles.stats}>

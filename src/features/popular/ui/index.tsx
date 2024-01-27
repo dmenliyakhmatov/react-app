@@ -7,11 +7,7 @@ export const Popular = () => {
   const location = useLocation();
   const [params, setParams] = useSearchParams();
 
-  console.log(params.get('category'));
-
   const [articles, setArtcicles] = useState(mockPosts);
-
-  console.log(params);
 
   useEffect(() => {
     if (params.get('category') !== 'all') {

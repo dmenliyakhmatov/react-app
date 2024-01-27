@@ -8,8 +8,6 @@ type IconButtonProps = {
 };
 
 export const IconButton = ({ icon, children, onClick }: IconButtonProps) => {
-  console.log('render icon-button');
-
   return (
     <button className={styles.iconButton} onClick={onClick}>
       {icon && <span className={styles.icon}>{icon}</span>}
