@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { IconButton } from 'shared/components/IconButton';
 import TrashIcon from 'shared/icons/trash.svg';
@@ -11,7 +12,8 @@ type PostCardProps = {
   post: Article;
 };
 
-export const ArticleCard = ({ post }: PostCardProps) => {
+const NotOptimizedArticleCard = ({ post }: PostCardProps) => {
+  console.log('rerender ArticleCard');
   return (
     <div className={clsx(styles.postCard)}>
       <div className={styles.header}>
@@ -39,3 +41,7 @@ export const ArticleCard = ({ post }: PostCardProps) => {
     </div>
   );
 };
+
+export const ArticleCard = memo(NotOptimizedArticleCard, (prevProps, nextProps) => {
+  return prevProps.post.title === nextProps.post.title;
+});

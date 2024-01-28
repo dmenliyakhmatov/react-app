@@ -1,8 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { RootComponet } from '../features/core/Root';
-import { Popular } from '../features/popular/ui';
 import { ArticlePage } from '../pages/Article';
 import { FreshPage } from '../pages/Fresh';
+import { PopularPage } from '../pages/Popular';
 import { ROUTES } from './routes';
 
 export const router = createBrowserRouter([
@@ -12,7 +12,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Popular />,
+        element: <PopularPage />,
       },
       {
         path: ROUTES.fresh,
