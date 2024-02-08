@@ -4,6 +4,7 @@ import { IconButton } from '../../../../shared/components/IconButton';
 import { Article } from '../../../../shared/types/articles';
 import { PostStatsButtons } from './PostStatsButtons';
 import styles from './post.module.css';
+import { get } from 'services/transport';
 
 export const ArticleContent = () => {
   const { id } = useParams();
@@ -13,13 +14,10 @@ export const ArticleContent = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch(`https://68f241df693169c2.mokky.dev/articles/${id}`)
-      .then(res => {
-        if (!res.ok) throw res;
-        return res;
+    get(`https://68f241df693169c2.mokky.dev/articles/${id}`)
+      .then(({ data: recievedArticle }) => {
+        setArticle(recievedArticle);
       })
-      .then(res => res.json())
-      .then(setArticle)
       .catch(console.error)
       .finally(() => setIsLoading(false));
   }, [id]);

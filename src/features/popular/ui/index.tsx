@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ArticleList } from '../../../shared/features/ArticleList/ui';
 import { Article } from '../../../shared/types/articles';
+import { get } from 'services/transport';
 
 export const Popular = () => {
   const [articles, setArtcicles] = useState<Article[] | null>(null);
@@ -13,14 +14,9 @@ export const Popular = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch('https://68f241df693169c2.mokky.dev/articles')
-      .then(res => {
-        if (!res.ok) throw res;
-        return res;
-      })
-      .then(res => res.json())
 
-      .then(recievedArticles => {
+    get('/articles')
+      .then(({ data: recievedArticles }) => {
         setArtcicles(recievedArticles);
       })
       .catch(console.error)
@@ -30,8 +26,10 @@ export const Popular = () => {
   useEffect(() => {
     setArtcicles(
       prev =>
-        prev?.map((article, index) => ({ ...article, title: index === 3 ? article.title + count : article.title })) ??
-        null,
+        prev?.map((article, index) => ({
+          ...article,
+          title: index === 3 ? article.title + count : article.title,
+        })) ?? null,
     );
   }, [count]);
 
