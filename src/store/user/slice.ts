@@ -39,17 +39,18 @@ export const userSlice = createSlice({
     clearUserStore: () => initialState,
   },
   extraReducers: builder => {
-    builder.addCase(postAuthData.pending, (state, action) => {
-      state.isLoading = true;
-    });
-    builder.addCase(postAuthData.fulfilled, (state, action) => {
-      state.isLoading = false;
-      state.user = { ...action.payload.data, token: action.payload.token };
-    });
-    builder.addCase(postAuthData.rejected, (state, action) => {
-      state.isLoading = false;
-      state.error = action.error.message ?? 'Что-то пошло не так';
-    });
+    builder
+      .addCase(postAuthData.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(postAuthData.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.user = action.payload;
+      })
+      .addCase(postAuthData.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message ?? 'Что-то пошло не так';
+      });
   },
 });
 

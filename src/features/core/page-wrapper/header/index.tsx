@@ -1,11 +1,10 @@
-// Header.jsx
-
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { ROUTES } from '../../../../router/routes';
-import { getUserAvatar, getUserToken } from '../../../../store/user/selectors';
-import { userActions } from '../../../../store/user/slice';
-import styles from './header.module.css'; // Путь к вашему файлу стилей
+import { ROUTES } from 'router/routes';
+import { getUserAvatar, getUserToken } from 'store/user/selectors';
+import { userActions } from 'store/user/slice';
+import styles from './header.module.css';
+import { setStorageItem, STORAGE_KEY } from 'services/storage';
 
 export const Header = ({ onSearch }: { onSearch?: (e: React.ChangeEvent<HTMLInputElement>) => void }) => {
   const avatar = useSelector(getUserAvatar);
@@ -39,6 +38,7 @@ const LoginButton = () => {
 
   const logout = () => {
     dispatch(userActions.clearUserStore());
+    setStorageItem(STORAGE_KEY.USER_DATA, null);
   };
 
   if (token)

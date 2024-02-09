@@ -7,8 +7,6 @@ import styles from './loginForm.module.css';
 import { postAuthData } from 'store/user/effects';
 import { useAppDispatch } from 'store';
 
-type UserResponse = { data: { avatar: string; email: string; fullName: string; id: number }; token: string };
-
 export const LoginForm = () => {
   const dispatch = useAppDispatch();
   const isLoading = useSelector(getUserIsLoading);

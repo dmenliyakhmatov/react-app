@@ -1,5 +1,5 @@
 export const STORAGE_KEY = {
-  USER_TOKEN: 'user_token',
+  USER_DATA: 'user_data',
 };
 
 export const getStorageItem = (key: string): any => {
