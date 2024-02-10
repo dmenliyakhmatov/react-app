@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { get } from '../../../services/transport';
 import { ArticleList } from '../../../shared/features/ArticleList/ui';
 import { Article } from '../../../shared/types/articles';
 
@@ -13,14 +14,9 @@ export const Popular = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch('https://68f241df693169c2.mokky.dev/articles')
-      .then(res => {
-        if (!res.ok) throw res;
-        return res;
-      })
-      .then(res => res.json())
 
-      .then(recievedArticles => {
+    get('/private_articles')
+      .then(({ data: recievedArticles }) => {
         setArtcicles(recievedArticles);
       })
       .catch(console.error)
