@@ -55,9 +55,16 @@ export const userSlice = createSlice({
         state.error = action.error.message || 'Что-то пошло не так';
       });
   },
+  selectors: {
+    getUserIsLoading: state => state.isLoading,
+    getUserToken: state => state.user.token,
+    getUserAvatar: state => state.user.avatar,
+  },
 });
 
 export const userActions = userSlice.actions;
+
+export const { getUserAvatar, getUserIsLoading, getUserToken } = userSlice.selectors;
 
 console.log(userActions.clearUserStore());
 

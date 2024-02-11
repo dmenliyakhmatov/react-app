@@ -4,7 +4,7 @@ import { Navigate } from 'react-router-dom';
 import { ROUTES } from '../../../router/routes';
 import { useAppDispatch } from '../../../store';
 import { postAuthData } from '../../../store/user/effects';
-import { getUserIsLoading, getUserToken } from '../../../store/user/selectors';
+import { getUserIsLoading, getUserToken } from '../../../store/user/slice';
 import styles from './loginForm.module.css';
 
 export const LoginForm = () => {

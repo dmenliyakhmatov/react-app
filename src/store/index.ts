@@ -1,12 +1,27 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
+import { STORAGE_KEY, getStorageItem } from 'services/storage';
 import { userSlice } from './user/slice';
+
+const getUserDataFromStorage = () => {
+  const userData = getStorageItem(STORAGE_KEY.USER_DATA);
+  const initialState = userSlice.getInitialState();
+
+  if (userData) {
+    return { ...initialState, user: userData };
+  }
+
+  return initialState;
+};
 
 export const rootStore = configureStore({
   reducer: {
     [userSlice.name]: userSlice.reducer,
   },
   devTools: true,
+  preloadedState: {
+    userData: getUserDataFromStorage(),
+  },
 });
 
 export type RootState = ReturnType<typeof rootStore.getState>;
