@@ -3,13 +3,13 @@ import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { IconButton } from 'shared/components/IconButton';
 import TrashIcon from 'shared/icons/trash.svg';
-import { Article } from 'shared/types/articles';
+import { ArticleV2 } from 'shared/types/articles';
 import { ROUTES } from '../../../../../router/routes';
 import { PostStatsButtons } from './PostStatsButtons';
 import styles from './post.module.css';
 
 type PostCardProps = {
-  post: Article;
+  post: ArticleV2;
 };
 
 const NotOptimizedArticleCard = ({ post }: PostCardProps) => {
@@ -19,10 +19,10 @@ const NotOptimizedArticleCard = ({ post }: PostCardProps) => {
         <div className={styles.headerLeft}>
           <span>{post.section}</span>
           <div className={styles.authorInfo}>
-            <img src={post.authorAvatar} alt={`${post.authorName}'s Avatar`} className={styles.avatar} />
-            <span>{post.authorName}</span>
+            <img src={post.user.avatar} alt={`${post.user.fullName}'s Avatar`} className={styles.avatar} />
+            <span>{post.user.fullName}</span>
           </div>
-          <span>{post.publicationDate}</span>
+          <span>{post.publication_date}</span>
         </div>
         <div className={styles.headerRight}>
           <IconButton icon={<TrashIcon />} />
@@ -33,7 +33,7 @@ const NotOptimizedArticleCard = ({ post }: PostCardProps) => {
         <h2>{post.title}</h2>
 
         <div className={styles.coverImage}>
-          <img src={post.coverImage} alt="Cover" />
+          <img src={post.cover_image} alt="Cover" />
         </div>
       </Link>
       <PostStatsButtons bookmarks={post.bookmarks} comments={post.comments} likes={post.likes} views={post.views} />

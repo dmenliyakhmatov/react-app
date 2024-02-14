@@ -3,4 +3,5 @@ export const ROUTES = {
   fresh: '/fresh',
   article: '/article',
   auth: '/auth',
+  createArticle: '/create-article',
 };

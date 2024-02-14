@@ -3,7 +3,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../../../router/routes';
-import { STORAGE_KEY, setStorageItem } from '../../../../services/storage';
+import { setStorageItem, STORAGE_KEY } from '../../../../services/storage';
 import { getUserAvatar, getUserToken, userActions } from '../../../../store/user/slice';
 import styles from './header.module.css'; // Путь к вашему файлу стилей
 
@@ -18,7 +18,9 @@ export const Header = ({ onSearch }: { onSearch?: (e: React.ChangeEvent<HTMLInpu
       </div>
       <div className={styles.centerSection}>
         <input type="text" placeholder="Search" className={styles.searchInput} onChange={onSearch} />
-        {/* <button className={styles.newPostButton}>Create Post</button> */}
+        <Link to={ROUTES.createArticle} className={styles.newPostButton}>
+          Новый пост
+        </Link>
       </div>
       <div className={styles.rightSection}>
         <div className={styles.iconMessage}>📧</div>

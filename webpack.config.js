@@ -86,7 +86,7 @@ module.exports = env => {
               loader: 'css-loader',
               options: {
                 modules: {
-                  localIdentName: isDev ? '[path][name]__[local]' : '[hash:base64:8]',
+                  localIdentName: isDev ? '[name]____[local]--[hash:base64:8]' : '[hash:base64:8]',
                 },
               },
             },
@@ -95,6 +95,22 @@ module.exports = env => {
               options: {
                 postcssOptions: {
                   plugins: [autoprefixer],
+                },
+              },
+            },
+          ],
+        },
+        {
+          test: /\.css$/i,
+          exclude: /\.module\.css$/,
+          use: [
+            MiniCssExtractPlugin.loader,
+            'css-loader',
+            {
+              loader: 'postcss-loader',
+              options: {
+                postcssOptions: {
+                  plugins: [require('autoprefixer')],
                 },
               },
             },

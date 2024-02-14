@@ -5,6 +5,7 @@ import { AuthPage } from '../pages/Auth';
 import { FreshPage } from '../pages/Fresh';
 import { PopularPage } from '../pages/Popular';
 import { ROUTES } from './routes';
+import { CreateArticlePage } from '../pages/CreateAritcle';
 
 export const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ export const router = createBrowserRouter([
       {
         path: ROUTES.auth,
         element: <AuthPage />,
+      },
+      {
+        path: ROUTES.createArticle,
+        element: <CreateArticlePage />,
       },
     ],
   },
