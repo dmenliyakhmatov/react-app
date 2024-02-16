@@ -3,8 +3,6 @@ import { ArticleCard } from './ArticleCard';
 import styles from './articleList.module.css';
 
 export const ArticleList = ({ articles }: { articles: Article[] }) => {
-  console.log('rerender ArticleList');
-
   return (
     <div className={styles.articleListWrapper}>
       {articles.map(article => (

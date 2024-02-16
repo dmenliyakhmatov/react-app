@@ -13,7 +13,6 @@ type PostCardProps = {
 };
 
 const NotOptimizedArticleCard = ({ post }: PostCardProps) => {
-  console.log('rerender ArticleCard');
   return (
     <div className={clsx(styles.postCard)}>
       <div className={styles.header}>

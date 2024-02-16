@@ -1,8 +1,11 @@
 import { Outlet } from 'react-router-dom';
 import { PageWrapper } from './page-wrapper';
+import { LanguageProvider } from './language';
 
 export const RootComponet = () => (
-  <PageWrapper>
-    <Outlet />
-  </PageWrapper>
+  <LanguageProvider>
+    <PageWrapper>
+      <Outlet />
+    </PageWrapper>
+  </LanguageProvider>
 );

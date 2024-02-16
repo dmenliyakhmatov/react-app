@@ -5,8 +5,10 @@ import { rootStore } from './store';
 
 export const App = () => {
   return (
+    // <LanguageProvider>
     <Provider store={rootStore}>
-      <RouterProvider router={router} />;
+      <RouterProvider router={router} />
     </Provider>
+    // </LanguageProvider>
   );
 };
