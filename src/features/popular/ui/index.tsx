@@ -10,7 +10,7 @@ export const Popular = () => {
   useEffect(() => {
     setIsLoading(true);
 
-    get('/articles')
+    get('/private_articles')
       .then(({ data: recievedArticles }) => {
         setArtcicles(recievedArticles);
       })
@@ -23,7 +23,7 @@ export const Popular = () => {
 
   return (
     <div>
-      <ArticleList articles={articles} />;
+      <ArticleList articles={articles} />
     </div>
   );
 };

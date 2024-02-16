@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { IconButton } from 'shared/components/IconButton';
 import TrashIcon from 'shared/icons/trash.svg';
@@ -10,11 +9,24 @@ import styles from './post.module.css';
 
 type PostCardProps = {
   post: ArticleV2;
+  count?: number;
 };
 
-const NotOptimizedArticleCard = ({ post }: PostCardProps) => {
+const longTask = () => {
+  let i = 0;
+  while (i < 1000000000) {
+    i++;
+  }
+  return 'done';
+};
+
+export const ArticleCard = ({ post, count }: PostCardProps) => {
+  const statistics = longTask();
+  console.log('render');
+
   return (
     <div className={clsx(styles.postCard)}>
+      {count}
       <div className={styles.header}>
         <div className={styles.headerLeft}>
           <span>{post.section}</span>
@@ -40,7 +52,7 @@ const NotOptimizedArticleCard = ({ post }: PostCardProps) => {
     </div>
   );
 };
-
-export const ArticleCard = memo(NotOptimizedArticleCard, (prevProps, nextProps) => {
-  return prevProps.post.title === nextProps.post.title;
-});
+//
+// export const ArticleCard = memo(NotOptimizedArticleCard, (prevProps, nextProps) => {
+//   return prevProps.post.title === nextProps.post.title;
+// });
