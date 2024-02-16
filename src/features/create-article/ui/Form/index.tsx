@@ -1,5 +1,12 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { useNavigate } from 'react-router-dom';
+import Select from 'react-select';
+import { ROUTES } from '../../../../router/routes';
+import { FormikTextField } from '../../../../shared/components/FormikInputs/FormikTextField';
+import { useAppDispatch } from '../../../../store';
+import { createArticle } from '../../model/store/effects';
 import styles from './createArticleForm.module.css';
+import { createArtcileScheme } from './validation';
 
 interface FormData {
   title: string;
@@ -16,8 +23,13 @@ const validateRequired = (value: string) => {
 };
 
 export const CreateArticleForm = () => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
   const handleSubmit = (values: FormData, actions: any) => {
-    console.log(values);
+    dispatch(createArticle(values)).then(() => {
+      navigate(ROUTES.root);
+    });
   };
 
   return (
@@ -30,41 +42,43 @@ export const CreateArticleForm = () => {
           content: '',
           section: '',
         }}
+        validationSchema={createArtcileScheme}
         onSubmit={handleSubmit}
+        validateOnBlur
       >
         <Form className={styles.createPostForm}>
           <div className={styles.formField}>
-            <label htmlFor="title">Название:</label>
-            <Field type="text" id="title" name="title" className={styles.inputField} validate={validateRequired} />
-            <ErrorMessage name="title" component="div" className={styles.errorMessage} />
+            <FormikTextField label="Название" name="title" />
           </div>
 
           <div className={styles.formField}>
-            <label htmlFor="description">Раздел:</label>
+            <label htmlFor="section">Раздел:</label>
             <br />
-            <Field id="section" name="section" className={styles.inputField} />
+            <Field
+              component={Select}
+              id="section"
+              name="section"
+              options={[
+                { value: 'traveling', label: 'Путешествия' },
+                { value: 'tech', label: 'Технологии' },
+                { value: 'games', label: 'Игры' },
+                { value: 'movies', label: 'Кино' },
+                { value: 'music', label: 'Музыка' },
+              ]}
+            />
             <ErrorMessage name="section" component="div" className={styles.errorMessage} />
           </div>
 
           <div className={styles.formField}>
-            <label htmlFor="description">Краткое описание:</label>
-            <br />
-            <Field as="textarea" id="description" name="description" className={styles.textareaField} />
-            <ErrorMessage name="description" component="div" className={styles.errorMessage} />
+            <FormikTextField label="Краткое описание" name="description" />
           </div>
 
           <div className={styles.formField}>
-            <label htmlFor="coverImage">Обложка:</label>
-            <br />
-            <Field id="coverImage" name="cover_image" className={styles.fileInput} />
-            <ErrorMessage name="coverImage" component="div" className={styles.errorMessage} />
+            <FormikTextField label="Обложка" name="cover_image" />
           </div>
 
           <div className={styles.formField}>
-            <label htmlFor="content">Содержимое:</label>
-            <br />
-            <Field as="textarea" id="content" name="content" className={styles.textareaField} />
-            <ErrorMessage name="content" component="div" className={styles.errorMessage} />
+            <FormikTextField label="Содержимое" name="content" type="textarea" />
           </div>
 
           <button type="submit" className={styles.submitButton}>

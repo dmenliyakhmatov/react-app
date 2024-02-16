@@ -12,7 +12,7 @@ const initialState: CreateArticleState = {
 };
 
 export const creationArticleSlice = createSlice({
-  name: 'createArticle',
+  name: 'article/createArticle',
   initialState,
   reducers: {},
   extraReducers: builder => {

@@ -1,7 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
-import { STORAGE_KEY, getStorageItem } from 'services/storage';
+import { getStorageItem, STORAGE_KEY } from 'services/storage';
 import { userSlice } from './user/slice';
+import { creationArticleSlice } from '../features/create-article/model/store/slice';
 
 const getUserDataFromStorage = () => {
   const userData = getStorageItem(STORAGE_KEY.USER_DATA);
@@ -17,6 +18,7 @@ const getUserDataFromStorage = () => {
 export const rootStore = configureStore({
   reducer: {
     [userSlice.name]: userSlice.reducer,
+    [creationArticleSlice.name]: creationArticleSlice.reducer,
   },
   devTools: true,
   preloadedState: {

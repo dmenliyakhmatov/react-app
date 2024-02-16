@@ -24,9 +24,6 @@ export const Popular = () => {
   return (
     <div>
       <ArticleList articles={articles} />;
-      <ArticleList articles={articles} />;
-      <ArticleList articles={articles} />;
-      <ArticleList articles={articles} />;
     </div>
   );
 };

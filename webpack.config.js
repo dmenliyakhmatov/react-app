@@ -80,6 +80,22 @@ module.exports = env => {
         },
         {
           test: /\.css$/i,
+          exclude: /\.module\.css$/,
+          use: [
+            MiniCssExtractPlugin.loader,
+            'css-loader',
+            {
+              loader: 'postcss-loader',
+              options: {
+                postcssOptions: {
+                  plugins: [autoprefixer],
+                },
+              },
+            },
+          ],
+        },
+        {
+          test: /\.module\.css$/i,
           use: [
             MiniCssExtractPlugin.loader,
             {
@@ -95,22 +111,6 @@ module.exports = env => {
               options: {
                 postcssOptions: {
                   plugins: [autoprefixer],
-                },
-              },
-            },
-          ],
-        },
-        {
-          test: /\.css$/i,
-          exclude: /\.module\.css$/,
-          use: [
-            MiniCssExtractPlugin.loader,
-            'css-loader',
-            {
-              loader: 'postcss-loader',
-              options: {
-                postcssOptions: {
-                  plugins: [require('autoprefixer')],
                 },
               },
             },
