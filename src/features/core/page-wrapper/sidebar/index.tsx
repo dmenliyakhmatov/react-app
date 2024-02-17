@@ -3,11 +3,10 @@
 import clsx from 'clsx';
 import { NavLink } from 'react-router-dom';
 import { ROUTES } from 'router/routes';
-import styles from './left-menu.module.css';
 import { LanguageSelector } from '../../language';
+import styles from './left-menu.module.css';
 
 export const Sidebar = () => {
-  console.log('sideBar');
   return (
     <nav className={styles.leftMenu}>
       <div>

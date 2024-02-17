@@ -8,9 +8,15 @@ export const Popular = () => {
   const [articles, setArtcicles] = useState<Article[] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const lang = useContext(LanguageContext);
+  const languageApi = useContext(LanguageContext);
+  if (!languageApi) {
+    throw new Error('LanguageSelector must be used within a LanguageProvider');
+  }
+
+  const { language } = languageApi;
 
   console.log('Popular render');
+
   useEffect(() => {
     setIsLoading(true);
 
@@ -27,6 +33,10 @@ export const Popular = () => {
 
   return (
     <div>
+      <p>{language}</p>
+      <ArticleList articles={articles} />;
+      <ArticleList articles={articles} />;
+      <ArticleList articles={articles} />;
       <ArticleList articles={articles} />;
     </div>
   );
