@@ -1,12 +1,21 @@
 // LeftMenu.jsx
 
 import clsx from 'clsx';
+import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { ROUTES } from 'router/routes';
-import { LanguageSelector } from '../../language';
+import { LanguageContext, LanguageSelector } from '../../language';
 import styles from './left-menu.module.css';
 
 export const Sidebar = () => {
+  const i18n = useContext(LanguageContext);
+
+  if (!i18n) {
+    throw new Error('LanguageSelector must be used within a LanguageProvider');
+  }
+
+  const { keys } = i18n;
+
   return (
     <nav className={styles.leftMenu}>
       <div>
@@ -15,23 +24,23 @@ export const Sidebar = () => {
           className={({ isActive }) => clsx(styles.menuItem, { [styles.active]: isActive })}
         >
           <span className={styles.icon}>🔥</span>
-          <span>Популярное</span>
+          <span>{keys.popular}</span>
         </NavLink>
         <NavLink to={ROUTES.fresh} className={({ isActive }) => clsx(styles.menuItem, { [styles.active]: isActive })}>
           <span className={styles.icon}>🆕</span>
-          <span>Свежее</span>
+          <span>{keys.fresh}</span>
         </NavLink>
         <div className={styles.menuItem}>
           <span className={styles.icon}>💼</span>
-          <a>Вакансии</a>
+          <a>{keys.vacancies}</a>
         </div>
         <div className={styles.menuItem}>
           <span className={styles.icon}>🏆</span>
-          <a>Рейтинги</a>
+          <a>{keys.ratings}</a>
         </div>
         <div className={styles.menuItem}>
           <span className={styles.icon}>📬</span>
-          <a>Подписки</a>
+          <a>{keys.subscriptions}</a>
         </div>
       </div>
       <LanguageSelector />

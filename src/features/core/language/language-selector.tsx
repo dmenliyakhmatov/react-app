@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { LanguageContext } from './index';
+import { LANGUAGES, LanguageContext } from './index';
 
 export const LanguageSelector = () => {
   const languageContext = useContext(LanguageContext);
@@ -13,9 +13,9 @@ export const LanguageSelector = () => {
   return (
     <div>
       <p>Current Language: {language}</p>
-      <select value={language} onChange={e => setLanguage(e.target.value)}>
-        <option value="ru">Русский</option>
-        <option value="en">English</option>
+      <select value={language} onChange={e => setLanguage(e.target.value as LANGUAGES)}>
+        <option value={LANGUAGES.RU}>Русский</option>
+        <option value={LANGUAGES.EN}>English</option>
       </select>
     </div>
   );
