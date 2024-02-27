@@ -5,7 +5,7 @@
   "main": "index.js",
   "homepage": "https://dmenliyakhmatov.github.io/react-app",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --env MODE=production",
     "start": "webpack serve --env MODE=development PORT=3000",
     "predeploy" : "npm run build",
     "deploy": "npm run build && gh-pages -d build"

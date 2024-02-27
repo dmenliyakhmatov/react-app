@@ -10,6 +10,13 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 const autoprefixer = require('autoprefixer');
 
+const devPlugins = [
+  new ReactRefreshPlugin({
+    overlay: false,
+  }),
+  new ProgressPlugin(),
+];
+
 module.exports = env => {
   const isDev = env.MODE === 'development';
 
@@ -21,7 +28,7 @@ module.exports = env => {
       ? {
           open: false,
           hot: true,
-          port: env.mode ?? 3000,
+          port: env.PORT ?? 3000,
           historyApiFallback: true,
         }
       : undefined,
@@ -56,14 +63,10 @@ module.exports = env => {
       new MiniCssExtractPlugin({
         filename: isDev ? '[name].css' : '[name].[contenthash].css',
       }),
-      new ReactRefreshPlugin({
-        overlay: false,
-      }),
       new ESLintPlugin({
         extensions: ['js', 'jsx', 'ts', 'tsx'],
       }),
-      new ProgressPlugin(),
-    ],
+    ].concat(isDev ? devPlugins : []),
     module: {
       rules: [
         {
