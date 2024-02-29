@@ -22,7 +22,6 @@ const longTask = () => {
 
 export const ArticleCard = ({ post, count }: PostCardProps) => {
   const statistics = longTask();
-  console.log('render');
 
   return (
     <div className={clsx(styles.postCard)}>
