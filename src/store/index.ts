@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 import { getStorageItem, STORAGE_KEY } from 'services/storage';
+import { articlesApi } from '../api/articles';
 import { creationArticleSlice } from '../features/create-article/model/store/slice';
 import { popularSlice } from '../features/popular/model/store/slice';
 import { userSlice } from './user/slice';
@@ -21,11 +22,13 @@ export const rootStore = configureStore({
     [userSlice.name]: userSlice.reducer,
     [creationArticleSlice.name]: creationArticleSlice.reducer,
     [popularSlice.name]: popularSlice.reducer,
+    [articlesApi.reducerPath]: articlesApi.reducer,
   },
   devTools: true,
   preloadedState: {
     userData: getUserDataFromStorage(),
   },
+  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(articlesApi.middleware),
 });
 
 export type RootState = ReturnType<typeof rootStore.getState>;
