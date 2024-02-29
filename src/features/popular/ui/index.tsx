@@ -1,22 +1,22 @@
-import { useEffect, useState } from 'react';
-import { get } from '../../../services/transport';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { ArticleList } from '../../../shared/features/ArticleList/ui';
-import { ArticleV2 } from '../../../shared/types/articles';
+import { useAppDispatch } from '../../../store';
+import { getPopularArticle } from '../model/store/effects';
+import { clearPopularStore, getPopularArticles, getPopularIsLoading } from '../model/store/slice';
 
 export const Popular = () => {
-  const [articles, setArtcicles] = useState<ArticleV2[] | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const articles = useSelector(getPopularArticles);
+  const isLoading = useSelector(getPopularIsLoading);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    setIsLoading(true);
+    dispatch(getPopularArticle());
 
-    get('/private_articles')
-      .then(({ data: recievedArticles }) => {
-        setArtcicles(recievedArticles);
-      })
-      .catch(console.error)
-      .finally(() => setIsLoading(false));
-  }, []);
+    return () => {
+      dispatch(clearPopularStore());
+    };
+  }, [dispatch]);
 
   if (isLoading) return <div>Loading....</div>;
   if (!articles) return <div>{`There aren't articles `}</div>;
