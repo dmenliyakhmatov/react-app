@@ -1,10 +1,14 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import Select from 'react-select';
-import { ROUTES } from '../../../../router/routes';
 import { FormikTextField } from '../../../../shared/components/FormikInputs/FormikTextField';
-import { useAppDispatch } from '../../../../store';
-import { createArticle } from '../../model/store/effects';
+// import { useAppDispatch } from '../../../../store';
+// import { createArticle } from '../../model/store/effects';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useCreateArticleMutation } from '../../../../api/articles';
+import { ROUTES } from '../../../../router/routes';
+import { getUserId } from '../../../../store/user/slice';
 import styles from './createArticleForm.module.css';
 import { createArtcileScheme } from './validation';
 
@@ -23,13 +27,22 @@ const validateRequired = (value: string) => {
 };
 
 export const CreateArticleForm = () => {
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const [createArticle, { isLoading, isSuccess }] = useCreateArticleMutation();
+  const userId = useSelector(getUserId);
+
+  useEffect(() => {
+    if (isSuccess) navigate(ROUTES.root);
+  }, [isSuccess, navigate]);
+
+  if (!userId) return null;
 
   const handleSubmit = (values: FormData, actions: any) => {
-    dispatch(createArticle(values)).then(() => {
-      navigate(ROUTES.root);
-    });
+    createArticle({ user_id: userId, ...values });
+
+    // dispatch(createArticle(values)).then(() => {
+    //   navigate(ROUTES.root);
+    // });
   };
 
   return (

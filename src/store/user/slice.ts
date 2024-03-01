@@ -59,12 +59,13 @@ export const userSlice = createSlice({
     getUserIsLoading: state => state.isLoading,
     getUserToken: state => state.user.token,
     getUserAvatar: state => state.user.avatar,
+    getUserId: state => state.user.id,
   },
 });
 
 export const userActions = userSlice.actions;
 
-export const { getUserAvatar, getUserIsLoading, getUserToken } = userSlice.selectors;
+export const { getUserAvatar, getUserIsLoading, getUserToken, getUserId } = userSlice.selectors;
 
 console.log(userActions.clearUserStore());
 

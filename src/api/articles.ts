@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { CreateArticleActionPayload } from '../features/create-article/model/schemes/createArticles';
 import { STORAGE_KEY, getStorageItem } from '../services/storage';
 import { ArticleV2 } from '../shared/types/articles';
 
@@ -20,7 +21,21 @@ export const articlesApi = createApi({
     getFreshArticles: builder.query<ArticleV2[], unknown>({
       query: () => 'fresh_articles',
     }),
+    createArticle: builder.mutation<unknown, CreateArticleActionPayload & { user_id: number }>({
+      query: article => ({
+        url: '/articles?_relations=users',
+        method: 'POST',
+        body: {
+          ...article,
+          publication_date: new Date().toISOString(),
+          views: 0,
+          likes: 0,
+          comments: 0,
+          bookmarks: 0,
+        },
+      }),
+    }),
   }),
 });
 
-export const { useGetFreshArticlesQuery } = articlesApi;
+export const { useGetFreshArticlesQuery, useCreateArticleMutation } = articlesApi;
