@@ -30,10 +30,13 @@ export const Sidebar = () => {
           <span className={styles.icon}>🆕</span>
           <span>{keys.fresh}</span>
         </NavLink>
-        <div className={styles.menuItem}>
+        <NavLink
+          to={ROUTES.vacancies}
+          className={({ isActive }) => clsx(styles.menuItem, { [styles.active]: isActive })}
+        >
           <span className={styles.icon}>💼</span>
-          <a>{keys.vacancies}</a>
-        </div>
+          <span>{keys.vacancies}</span>
+        </NavLink>
         <div className={styles.menuItem}>
           <span className={styles.icon}>🏆</span>
           <a>{keys.ratings}</a>

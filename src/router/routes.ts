@@ -4,4 +4,5 @@ export const ROUTES = {
   article: '/article',
   auth: '/auth',
   createArticle: '/create-article',
+  vacancies: '/vacancies',
 };

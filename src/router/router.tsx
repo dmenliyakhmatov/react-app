@@ -2,10 +2,11 @@ import { createBrowserRouter } from 'react-router-dom';
 import { RootComponet } from '../features/core/Root';
 import { ArticlePage } from '../pages/Article';
 import { AuthPage } from '../pages/Auth';
+import { CreateArticlePage } from '../pages/CreateAritcle';
 import { FreshPage } from '../pages/Fresh';
 import { PopularPage } from '../pages/Popular';
+import { VacanciesPage } from '../pages/Vacancies';
 import { ROUTES } from './routes';
-import { CreateArticlePage } from '../pages/CreateAritcle';
 
 export const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ export const router = createBrowserRouter([
       {
         path: ROUTES.createArticle,
         element: <CreateArticlePage />,
+      },
+      {
+        path: ROUTES.vacancies,
+        element: <VacanciesPage />,
       },
     ],
   },
