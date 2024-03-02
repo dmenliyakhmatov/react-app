@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { get } from '../services/transport';
 
-export const useFetch = (url: string) => {
-  const [data, setData] = useState<any>(null);
+export const useFetch = <T>(url: string) => {
+  const [data, setData] = useState<T | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const [error, setError] = useState<Error | null>(null);
