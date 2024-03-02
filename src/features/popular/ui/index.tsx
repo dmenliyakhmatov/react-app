@@ -20,7 +20,6 @@ export const Popular = () => {
 
     const handleScroll = throttle(() => {
       const { scrollTop, scrollHeight, clientHeight } = listElement;
-      console.log(scrollTop);
 
       if (scrollTop + clientHeight >= scrollHeight * 0.6) {
         setShowToTopButton(true);

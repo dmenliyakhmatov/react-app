@@ -1,8 +1,6 @@
-import { useCallback, useRef, useState } from 'react';
-import { Row, RowData } from './Fresh';
+import { memo, useCallback, useRef, useState } from 'react';
 
 export function Table() {
-  // Массив данных для отображения в таблице
   const [data, setData] = useState<RowData[]>([
     { id: 1, name: 'John', age: 30 },
     { id: 2, name: 'Jane', age: 25 },
@@ -58,15 +56,16 @@ export function Table() {
 
   const inputRef = useRef<HTMLInputElement | null>(null);
 
+  // const [value, setValue] = useState('');
   const [selectedRows, setSelectedRows] = useState<number[]>([]);
 
   const handleRowClick = useCallback((id: number) => {
-    setSelectedRows(prevSelected => {
-      const selectedIndex = prevSelected.indexOf(id);
+    setSelectedRows(prev => {
+      const selectedIndex = prev.indexOf(id);
       if (selectedIndex === -1) {
-        return [...prevSelected, id];
+        return [...prev, id];
       } else {
-        const updatedRows = [...prevSelected];
+        const updatedRows = [...prev];
         updatedRows.splice(selectedIndex, 1);
         return updatedRows;
       }
@@ -76,12 +75,12 @@ export function Table() {
   const addNew = () => {
     if (!inputRef.current) return;
 
-    setData(prev => [{ id: prev.length + 1, name: inputRef.current?.value ?? '', age: 29 }, ...prev]);
+    setData(prev => [{ id: prev.length + 1, name: inputRef.current?.value || '', age: 29 }, ...prev]);
   };
 
   return (
     <div>
-      <input type="text" ref={inputRef} />
+      <input ref={inputRef} type="text" />
       <button onClick={addNew}>Add</button>
       <table>
         <thead>
@@ -100,3 +99,41 @@ export function Table() {
     </div>
   );
 }
+
+type RowData = {
+  id: number;
+  name: string;
+  age: number;
+};
+
+type RowProps = {
+  selected: boolean;
+  handleRowClick: (id: number) => void;
+} & RowData;
+
+const longTask = (arg: boolean) => {
+  let i = 0;
+  while (i < 100000000) {
+    i++;
+  }
+  return 'done';
+};
+
+const Row = memo((props: RowProps) => {
+  const a = longTask(props.selected);
+
+  // const b = useMemo(() => longTask(props.selected), [props.selected]);
+  // longTask(props.selected);
+  // console.log(`render ${props.id}`);
+
+  return (
+    <tr
+      onClick={() => props.handleRowClick(props.id)}
+      style={{ backgroundColor: props.selected ? 'lightblue' : 'white' }}
+    >
+      <td>{props.id}</td>
+      <td>{props.name}</td>
+      <td>{props.age}</td>
+    </tr>
+  );
+});
