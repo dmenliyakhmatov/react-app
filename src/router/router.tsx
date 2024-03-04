@@ -5,6 +5,8 @@ import { AuthPage } from '../pages/Auth';
 import { CreateArticlePage } from '../pages/CreateAritcle';
 import { FreshPage } from '../pages/Fresh';
 import { PopularPage } from '../pages/Popular';
+import { UseMemoPage } from '../pages/UseMemoExamplePage';
+import { UseRefPage } from '../pages/UseRefExamplePage';
 import { VacanciesPage } from '../pages/Vacancies';
 import { ROUTES } from './routes';
 
@@ -36,6 +38,14 @@ export const router = createBrowserRouter([
       {
         path: ROUTES.vacancies,
         element: <VacanciesPage />,
+      },
+      {
+        path: ROUTES.useMemoExample,
+        element: <UseMemoPage />,
+      },
+      {
+        path: ROUTES.useRefExample,
+        element: <UseRefPage />,
       },
     ],
   },

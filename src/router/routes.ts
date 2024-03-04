@@ -5,4 +5,6 @@ export const ROUTES = {
   auth: '/auth',
   createArticle: '/create-article',
   vacancies: '/vacancies',
+  useRefExample: 'use-ref',
+  useMemoExample: 'use-memo',
 };

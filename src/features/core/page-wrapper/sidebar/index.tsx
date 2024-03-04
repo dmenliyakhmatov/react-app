@@ -37,6 +37,21 @@ export const Sidebar = () => {
           <span className={styles.icon}>💼</span>
           <span>{keys.vacancies}</span>
         </NavLink>
+
+        <NavLink
+          to={ROUTES.useMemoExample}
+          className={({ isActive }) => clsx(styles.menuItem, { [styles.active]: isActive })}
+        >
+          <span className={styles.icon}>🆕</span>
+          <span>use-memo-example</span>
+        </NavLink>
+        <NavLink
+          to={ROUTES.useRefExample}
+          className={({ isActive }) => clsx(styles.menuItem, { [styles.active]: isActive })}
+        >
+          <span className={styles.icon}>🆕</span>
+          <span>use-ref-example</span>
+        </NavLink>
         <div className={styles.menuItem}>
           <span className={styles.icon}>🏆</span>
           <a>{keys.ratings}</a>
