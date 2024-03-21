@@ -53,6 +53,7 @@ module.exports = env => {
     plugins: [
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, 'template', 'index.html'),
+        publicPath: '/',
       }),
       new ForkTsCheckerWebpackPlugin({
         async: false,
